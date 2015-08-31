@@ -12,7 +12,7 @@
  * @author hacks
  */
 
-include_once("Models/TryUpdate.php");
+include_once("interfaces/TryUpdate.php");
 
 class TryResetPassword implements TryUpdate{
     

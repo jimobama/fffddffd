@@ -1,9 +1,7 @@
 <?php
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
  */
 
 /**
@@ -21,15 +19,15 @@ require_once("Models/TryFetchUser.php");
 
 class TryFetchUserController implements IController{
     public function Index() {
-       $getEmail =  HttpResquestHandler::RequestParams("email") ;
-       $getPassword =  HttpResquestHandler::RequestParams("password");  
-      
+        //Get the Post data safely else return null if no post item with name is found
+       $getEmail =  HttpResquestHandler::getParam("email") ;
+       $getPassword =  HttpResquestHandler::getParam("password");        
        return $this->getUserInfo($getEmail,$getPassword);
         
     }
     
     
-   public function getUserInfo($username, $password)
+  private function getUserInfo($username, $password)
       {
            $jsonViewer = new    JsonViewer();
           

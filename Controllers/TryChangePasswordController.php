@@ -25,9 +25,9 @@ class TryChangePasswordController implements IController {
     
     public function Index() {
         
-        $email = HttpResquestHandler::RequestParams("email");
-        $resetCode= HttpResquestHandler::RequestParams("resetCode");
-        $newpassword =  HttpResquestHandler::RequestParams("password");        
+        $email = HttpResquestHandler::getParam("email");
+        $resetCode= HttpResquestHandler::getParam("resetCode");
+        $newpassword =  HttpResquestHandler::getParam("password");        
         
         return $this->tryChangePassword($email,$newpassword,$resetCode);
        

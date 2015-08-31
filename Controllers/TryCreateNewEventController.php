@@ -27,16 +27,16 @@ class TryCreateNewEventController implements IController {
     public function Index() {
         
          
-        $email=  HttpResquestHandler::RequestParams("email");
-        $password=  HttpResquestHandler::RequestParams("password");
-        $title=  HttpResquestHandler::RequestParams("title");
-        $venue= HttpResquestHandler::RequestParams("venue");      
+        $email=  HttpResquestHandler::getParam("email");
+        $password=  HttpResquestHandler::getParam("password");
+        $title=  HttpResquestHandler::getParam("title");
+        $venue= HttpResquestHandler::getParam("venue");      
      //   $dateOfEvent=  HttpResquestHandler::RequestParams("dateOfEvent");
-        $privacy =  HttpResquestHandler::RequestParams("privacy");
+        $privacy =  HttpResquestHandler::getParam("privacy");
        // $duration = HttpResquestHandler::RequestParams("duration");      
-        $fees = HttpResquestHandler::RequestParams("fees");
+        $fees = HttpResquestHandler::getParam("fees");
         //$searchable = HttpResquestHandler::RequestParams("searchable_keywords");
-        $currency_country = HttpResquestHandler::RequestParams("currency_country");      
+        $currency_country = HttpResquestHandler::getParam("currency_country");      
         
       //  $eventdata= floatval($dateOfEvent)/1000;
         
@@ -125,7 +125,7 @@ private function validate(Event $event)
       $response["success"]=0;
       $tryCreateEvent= new TryCreateEvent($event);
               
-               $status= $tryCreateEvent->Create();  
+               $status= $tryCreateEvent->create();  
                if($status){
                $response["success"]=1;
                $response["message"]="created";

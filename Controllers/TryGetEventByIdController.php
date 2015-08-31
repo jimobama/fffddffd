@@ -18,7 +18,7 @@ class TryGetEventByIdController implements IController{
     
     public function Index() {
         
-         $eventId= HttpResquestHandler::RequestParams("event_id");
+         $eventId= HttpResquestHandler::getParam("event_id");
          $response=array();
          $response["success"]=0;
          

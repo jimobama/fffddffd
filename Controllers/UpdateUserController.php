@@ -21,11 +21,11 @@ class UpdateUserController  implements IController{
     public function Index() {
         
         
-        $email= HttpResquestHandler::RequestParams("email");       
-        $password= HttpResquestHandler::RequestParams("password");
-        $fullname= HttpResquestHandler::RequestParams("fullname");
-        $long= (HttpResquestHandler::RequestParams("long")!=null)?HttpResquestHandler::RequestParams("long"):0.000;
-        $lat= (HttpResquestHandler::RequestParams("lat")!=null)?HttpResquestHandler::RequestParams("long"):0.000; 
+        $email= HttpResquestHandler::getParam("email");       
+        $password= HttpResquestHandler::getParam("password");
+        $fullname= HttpResquestHandler::getParam("fullname");
+        $long= (HttpResquestHandler::getParam("long")!=null)?HttpResquestHandler::getParam("long"):0.000;
+        $lat= (HttpResquestHandler::getParam("lat")!=null)?HttpResquestHandler::getParam("long"):0.000; 
         
         return $this->Update($email,$password,$fullname, $long,$lat);
         

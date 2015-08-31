@@ -18,10 +18,10 @@ include_once("Models/EventTable.php");
 
 class TryUpdateEventDescriptionController implements IController {
     public function Index() {
-         $desc= HttpResquestHandler::RequestParams("desc");
-         $event_id= HttpResquestHandler::RequestParams("event_id");
-         $user_id= HttpResquestHandler::RequestParams("user_id");
-         $user_password= HttpResquestHandler::RequestParams("password");
+         $desc= HttpResquestHandler::getParam("desc");
+         $event_id= HttpResquestHandler::getParam("event_id");
+         $user_id= HttpResquestHandler::getParam("user_id");
+         $user_password= HttpResquestHandler::getParam("password");
          return $this->updateEvent($user_id,$user_password,$event_id,$desc);
     }
     

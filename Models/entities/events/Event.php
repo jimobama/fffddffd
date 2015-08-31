@@ -48,6 +48,7 @@ class Event {
     function setGoing($going)
     {
         $this->going=$going;
+        return $this;
     }
     function getGoing(){
         return $this->going;
@@ -58,10 +59,12 @@ class Event {
     }
     function setId($id){
         $this->__id=$id;
+         return $this;
     }
     function setCreatorId($creatorid)
     {
         $this->__creatorId=$creatorid;
+         return $this;
        
     }
     
@@ -76,10 +79,12 @@ class Event {
     }
     function setTitle($title){
         $this->__title=$title;
+         return $this;
     }
     function getCreateDate()
     {
         return $this->__createDate;
+         return $this;
     }
     
     function setCreateDate($createdate)

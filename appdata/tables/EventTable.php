@@ -40,25 +40,25 @@ class EventTable implements ITable {
         }
         
             //create the table
-             $db->createFields(EventTable::Id, "Varchar(40)", "PRIMARY KEY");
+             $db->createField(EventTable::Id, "Varchar(40)", "PRIMARY KEY");
              
-             $db->createFields(EventTable::Privacy, "Varchar(50)", "Not Null");
-              $db->createFields(EventTable::Status, "int", "DEFAULT 0");
-             $db->createFields(EventTable::CreatorId, "Varchar(40)", "NOT NULL");
-             $db->createFields(EventTable::Title, "Varchar(50)", "NOT NULL");
-             $db->createFields(EventTable::Venue, "Varchar(40)", " Not null");
-             $db->createFields(EventTable::CreateDate, "Varchar(40)", "NOT NULL");
-             $db->createFields(EventTable::Description, "Text", "");
-             $db->createFields(EventTable::StartDate, " Varchar(40)", "NOT NULL");  
-             $db->createFields(EventTable::Going, "int", "default 0");  
-             $db->createFields(EventTable::SeachableKeywords, "Text", "");  
-             $db->createFields(EventTable::CurrencyCountry, "Varchar(50)", ""); 
-             $db->createFields(EventTable::Image, " Varchar(50)", "");   
-             $db->createFields(EventTable::Fees, "DOUBLE(16,2)", "default 0.0");  
+             $db->createField(EventTable::Privacy, "Varchar(50)", "Not Null");
+              $db->createField(EventTable::Status, "int", "DEFAULT 0");
+             $db->createField(EventTable::CreatorId, "Varchar(40)", "NOT NULL");
+             $db->createField(EventTable::Title, "Varchar(50)", "NOT NULL");
+             $db->createField(EventTable::Venue, "Varchar(40)", " Not null");
+             $db->createField(EventTable::CreateDate, "Varchar(40)", "NOT NULL");
+             $db->createField(EventTable::Description, "Text", "");
+             $db->createField(EventTable::StartDate, " Varchar(40)", "NOT NULL");  
+             $db->createField(EventTable::Going, "int", "default 0");  
+             $db->createField(EventTable::SeachableKeywords, "Text", "");  
+             $db->createField(EventTable::CurrencyCountry, "Varchar(50)", ""); 
+             $db->createField(EventTable::Image, " Varchar(50)", "");   
+             $db->createField(EventTable::Fees, "DOUBLE(16,2)", "default 0.0");  
              //$db->createFields(EventTable::StartTime, "Varchar(40)", "NOT NULL");            
-             $db->createFields(EventTable::Duration, "Varchar(50)", "Not Null");
+             $db->createField(EventTable::Duration, "Varchar(50)", "Not Null");
              
-             $db->createFields("FULLTEXT KEY ".EventTable::Title, "(".EventTable::Title.","
+             $db->createField("FULLTEXT KEY ".EventTable::Title, "(".EventTable::Title.","
                       .EventTable::Description.",".EventTable::SeachableKeywords.",".EventTable::Venue.")","");  
             
         

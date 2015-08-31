@@ -20,7 +20,7 @@ class TryQueryEventController  implements IController {
     
     public function Index() {
         
-        $query=  HttpResquestHandler::RequestParams("query_string");
+        $query=  HttpResquestHandler::getParam("query_string");
         
         return $this->fetchEventOn($query);
         

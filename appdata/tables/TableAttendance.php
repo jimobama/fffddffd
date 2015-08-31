@@ -19,9 +19,9 @@ class TableAttendance implements ITable {
     
     public function Create(\Database $db) {
         
-       $db->createFields(TableAttendance::EVENT_ID , "Varchar(40)", "NOT NULL");
-       $db->createFields(TableAttendance::USER_ID, "Varchar(40)", "NOT NULL");
-       $db->createFields("CONSTRAINT pk_event_goer ", "PRIMARY KEY (".TableAttendance::EVENT_ID.",".TableAttendance::USER_ID.")", "");
+       $db->createField(TableAttendance::EVENT_ID , "Varchar(40)", "NOT NULL");
+       $db->createField(TableAttendance::USER_ID, "Varchar(40)", "NOT NULL");
+       $db->createField("CONSTRAINT pk_event_goer ", "PRIMARY KEY (".TableAttendance::EVENT_ID.",".TableAttendance::USER_ID.")", "");
         
        $db->createTable(TableAttendance::TableName);
     }

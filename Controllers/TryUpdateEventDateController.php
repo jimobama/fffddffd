@@ -22,11 +22,11 @@ class TryUpdateEventDateController implements IController{
     
     public function Index() {
         
-         $user_id= HttpResquestHandler::RequestParams("user_id");
-         $password= HttpResquestHandler::RequestParams("password");
-         $event_id= HttpResquestHandler::RequestParams("event_id");
-         $startDate= HttpResquestHandler::RequestParams("start");
-         $endDate= HttpResquestHandler::RequestParams("end");  
+         $user_id= HttpResquestHandler::getParam("user_id");
+         $password= HttpResquestHandler::getParam("password");
+         $event_id= HttpResquestHandler::getParam("event_id");
+         $startDate= HttpResquestHandler::getParam("start");
+         $endDate= HttpResquestHandler::getParam("end");  
         
         
         return $this->updateEventDateVenue($user_id,$password,$event_id, $startDate,$endDate);

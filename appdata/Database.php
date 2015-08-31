@@ -13,7 +13,7 @@
  */
 
 
-include_once("Models/ITable.php");
+include_once("interfaces/ITable.php");
 
 class Database extends PDO {
     //put your code here
@@ -40,7 +40,7 @@ class Database extends PDO {
             }
        }//end functions
        
-       public function createFields($name, $type, $constraints)
+       public function createField($name, $type, $constraints)
        {
            if(Validator::IsWord(trim($name)))
            {
@@ -50,7 +50,7 @@ class Database extends PDO {
                 $fields ="$name  $type  $constraints";
                 $this->buildQuery($fields);
            }
-           
+           return $this;
            
        }
        public function createTable($tablename)

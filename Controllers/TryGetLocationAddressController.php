@@ -20,9 +20,9 @@ class TryGetLocationAddressController implements IController{
     public function Index() {
         
         
-         $address=  HttpResquestHandler::RequestParams("address");
-         $lat=  HttpResquestHandler::RequestParams("lat");
-          $long=  HttpResquestHandler::RequestParams("long");
+         $address=  HttpResquestHandler::getParam("address");
+         $lat=  HttpResquestHandler::getParam("lat");
+          $long=  HttpResquestHandler::getParam("long");
       
         return $this->getLocationAddress($address,$lat,$long);
         

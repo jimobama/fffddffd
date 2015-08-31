@@ -19,15 +19,15 @@ class RegisterUserController  implements IController {
  function __construct() {
        $this->db = new Database();       
        //create the table if not exist
-       $this->db->createFields("geo_long", "varchar(10)", "");
-       $this->db->createFields("geo_lat", "varchar(10)", "");
-       $this->db->createFields("email", "varchar(40)"," not null index");
-       $this->db->createFields("fullname", "varchar(50)", "");
-       $this->db->createFields("password", "varchar(50)", "not null");
-       $this->db->createFields("status", "int", "");
-        $this->db->createFields("image_path", "varchar(50)", "");
-       $this->db->createFields("acct_id", "varchar(16)", "primary key");      
-       $this->db->createFields("add_registered", "varchar(50)", "");
+       $this->db->createField("geo_long", "varchar(10)", "");
+       $this->db->createField("geo_lat", "varchar(10)", "");
+       $this->db->createField("email", "varchar(40)"," not null index");
+       $this->db->createField("fullname", "varchar(50)", "");
+       $this->db->createField("password", "varchar(50)", "not null");
+       $this->db->createField("status", "int", "");
+        $this->db->createField("image_path", "varchar(50)", "");
+       $this->db->createField("acct_id", "varchar(16)", "primary key");      
+       $this->db->createField("add_registered", "varchar(50)", "");
        //create the table
        $this->db->createTable("tbl_EventUsers");
   

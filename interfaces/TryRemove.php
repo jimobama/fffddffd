@@ -14,4 +14,5 @@
 interface TryRemove {
     //put your code here
     function remove($id);
+    
 }

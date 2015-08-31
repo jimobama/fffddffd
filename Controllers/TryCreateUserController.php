@@ -22,9 +22,9 @@ class TryCreateUserController implements IController{
     private $message="";
     public function Index() {        
         
-        $email= HttpResquestHandler::RequestParams("email");
-        $fullname= HttpResquestHandler::RequestParams("fullname");       
-        $gender= HttpResquestHandler::RequestParams("gender"); 
+        $email= HttpResquestHandler::getParam("email");
+        $fullname= HttpResquestHandler::getParam("fullname");       
+        $gender= HttpResquestHandler::getParam("gender"); 
         return $this->Create($email,$fullname, $gender);
     }
 
@@ -43,11 +43,10 @@ class TryCreateUserController implements IController{
                 ->setId(Validator::UniqueKey())
                 ->setGender($gender);
               
-       
-      
-       $valid=  $this->validate($user);
-       if($valid){
+   
+       if($this->validate($user)){
            
+           //call the mthod to try an create the user if the email did not exists
           $response=$this->tryCreate($user);
            
        }else{
@@ -102,8 +101,10 @@ class TryCreateUserController implements IController{
     {
      $tryFetchUser= new  TryFetchUser();
      $response=array();
+     $response["success"]=0;
      if($tryFetchUser->fetch($user->getEmail())==null)
        {
+            $user->setVerificationCode(Validator::UniqueKey(4));
             $tryCreate= new  TryCreateUser($user);       
             $abool=  $tryCreate->create();
            
@@ -112,10 +113,9 @@ class TryCreateUserController implements IController{
                 $response["success"]=1;                
                 $user= $tryFetchUser->fetch($user->getEmail());
                 $response["user"]=$user;
-                
-                $this->sendWelcomeMessage($user->getPassword(), json_encode($user));
+                $this->sendWelcomeMessage(json_encode($user));
            }else{
-                $response["success"]=0;
+               
                 $response["error_message"]="report this problem please!";
            }
            
@@ -129,30 +129,35 @@ class TryCreateUserController implements IController{
     
     
     //Do care if it send or not
-    private function sendWelcomeMessage($raw_password, $json)
+    private function sendWelcomeMessage($json)
     {
+       
         
         $user = new User($json);
         
+        
+     
+       
         if($user !=null)
         {
             $fullname=$user->getFullname();
             $code=$user->getVerificationCode();
+            $email=$user->getEmail();           
            
             $message = "Dear  $fullname, \n\t Thanks for register with DFinder , we intend to bring you new events around the world to you.\n"
                     . "The DEvents is a social application that search events around in your location  with just a clicked.\n"
                     . "\n <br> "
                     . "Below is your username and password"
                     . "<br>"
-                    . "Username = $user->Email\n"
-                    . "Password = $raw_password"
-                    . "\n"
-                    . "To verify your account you need to copy this given code below and paste it on the field at your screen\n<br>"
-                    . "Verication code : $code";
+                    . "Username = $email<br>"
+                    . "Verification code: = $code"
+                    . "\n<br>"
+                    . "To verify your account you need to copy the above given code below and paste it on the field at your screen\n<br>";
+                  
             
             $from="dfinderadministrator@noreply.com";
-            $to=$user->Email;
-            $name=$user->Fullname;
+            $to=$email;
+            $name=$fullname;
             $subject="DFinder account creation confirmation details";
             
             

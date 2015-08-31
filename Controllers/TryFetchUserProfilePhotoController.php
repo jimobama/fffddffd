@@ -21,8 +21,8 @@ class TryFetchUserProfilePhotoController implements IController {
     
     public function Index() {
         
-        $email = HttpResquestHandler::RequestParams("email");
-        $password = HttpResquestHandler::RequestParams("password");
+        $email = HttpResquestHandler::getParam("email");
+        $password = HttpResquestHandler::getParam("password");
         
         return $this->getProfileImageUrl($email,$password);
         

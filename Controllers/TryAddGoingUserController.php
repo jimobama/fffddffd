@@ -22,8 +22,8 @@ class TryAddGoingUserController  implements IController{
     
     public function Index() {
         
-        $user_id = HttpResquestHandler::RequestParams("user_id");
-        $event_id = HttpResquestHandler::RequestParams("event_id");
+        $user_id = HttpResquestHandler::getParam("user_id");
+        $event_id = HttpResquestHandler::getParam("event_id");
         
         return $this->getUpdateEvent($user_id,$event_id);
         

@@ -6,8 +6,8 @@
  * 
  */
 
-include_once("Models/ILogin.php");
-include_once("Models/UserTable.php");
+include_once("interfaces/ILogin.php");
+include_once("appdata/tables/UserTable.php");
 
 class TryUserLogin implements ILogin{
     //put your code here
@@ -22,6 +22,7 @@ class TryUserLogin implements ILogin{
         $this->password =$password;
         $this->db= new Database();
         
+        
     }
     
     //The method is override and check if the username and password given in the constructor is valid
@@ -34,8 +35,8 @@ class TryUserLogin implements ILogin{
            $userTable= new UserTable();
            $this->db->Create($userTable);
            
-           $sql= "Select *From ".UserTable::TableName
-                   ." where (".UserTable::UserName." = :username AND ".UserTable::UserPassword."=:password)";
+           $sql= "Select *From ".  UserLoginTable::TableName
+                   ." where (".UserLoginTable::ID." = :username AND ".UserLoginTable::Password."=:password)";
            
            //Add value to database 
            $stmt= $this->db->prepare($sql);

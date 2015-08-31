@@ -20,7 +20,7 @@ class TryFetchUserByEventIdController implements IController  {
     
     public function Index() {
         
-        $event_id= HttpResquestHandler::RequestParams("event_id");
+        $event_id= HttpResquestHandler::getParam("event_id");
         
         return $this->getUserByEventId($event_id);
         

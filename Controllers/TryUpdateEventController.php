@@ -22,12 +22,12 @@ class TryUpdateEventController implements IController {
     private $__message="";
     public function Index() {
         
-        $eventid = HttpResquestHandler::RequestParams("event_id");             
-        $email=  HttpResquestHandler::RequestParams("email");
-        $password=  HttpResquestHandler::RequestParams("password");
-        $title=  HttpResquestHandler::RequestParams("title");
-        $venue= HttpResquestHandler::RequestParams("venue"); 
-        $privacy =  HttpResquestHandler::RequestParams("privacy");      
+        $eventid = HttpResquestHandler::getParam("event_id");             
+        $email=  HttpResquestHandler::getParam("email");
+        $password=  HttpResquestHandler::getParam("password");
+        $title=  HttpResquestHandler::getParam("title");
+        $venue= HttpResquestHandler::getParam("venue"); 
+        $privacy =  HttpResquestHandler::getParam("privacy");      
      
         
         return $this->update($eventid,$title, $venue,$privacy,$email,$password);

@@ -22,9 +22,9 @@ class TryFetchUserEventController implements IController{
     public function Index() {
         
       
-        $email = HttpResquestHandler::RequestParams("email");
-        $password = HttpResquestHandler::RequestParams("password");  
-        $noevents=HttpResquestHandler::RequestParams("numberofevents");    ;
+        $email = HttpResquestHandler::getParam("email");
+        $password = HttpResquestHandler::getParam("password");  
+        $noevents=HttpResquestHandler::getParam("numberofevents");    ;
          
        return $this->getUserEvents($email,$password, $noevents);
       

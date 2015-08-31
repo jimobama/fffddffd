@@ -242,7 +242,7 @@ class HttpResquestHandler  implements IResquestHandler {
         return $this->_action;
     }
 
-    static public function RequestParams($param) {
+    static public function getParam($param) {
         if (isset($_REQUEST[$param])) {
             return $_REQUEST[$param];
         }

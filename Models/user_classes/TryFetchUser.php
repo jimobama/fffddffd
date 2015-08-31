@@ -11,9 +11,9 @@
  *
  * @author hacks
  */
-include_once("Models/TryFetch.php");
-include_once("Models/TryValidate.php");
-include_once("Models/UserTable.php");
+include_once("interfaces/TryFetch.php");
+include_once("interfaces/TryValidate.php");
+include_once("appdata/tables/UserTable.php");
 
 
 class TryFetchUser implements TryFetch, TryValidate 
@@ -22,25 +22,28 @@ class TryFetchUser implements TryFetch, TryValidate
     private $__message;
     private $database;
  
-    public function __construct(ITable $table=null) {
-        
+    public function __construct() {        
    
-      $this->database = new  Database();
-      if($table !=null){
-      $table->Create($this->database);
-      }
+      
     }
     
-    public function fetch($email) {
-         
+    public function fetch($email) {         
      
        if($this->validated($email))
        {
-           
+           //Try Create the database table 
+            $this->database = new  Database();      
+            $table= new UserTable();          
+            $table->Create($this->database);
+        
+      
           $columns=" ".UserTable::FullName.",".
                   UserTable::ID.",".
                   UserTable::Photo_URL.",".
-                  UserTable::RegisterDate.",".                 
+                  UserTable::RegisterDate.",".   
+                  UserTable::Gender.",".     
+                  UserTable::LastUpdateDate.",".  
+                  UserTable::VerificationCode.",".    
                   UserTable::UserName." ";                 
                    
            $query= "Select $columns from ".UserTable::TableName." where ".UserTable::UserName." =:email OR ".UserTable::ID."=:email";
@@ -66,7 +69,7 @@ class TryFetchUser implements TryFetch, TryValidate
         
     }
 
-    public function validated($email) {
+   public   function validated($email) {
         $okay=false;
         
         if(Validator::IsEmpty($email))

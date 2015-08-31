@@ -23,9 +23,9 @@ class TryRemoveUserEventController  implements IController{
     public function Index() {
         
         
-          $user_id= HttpResquestHandler::RequestParams("user_id");        
-          $password= HttpResquestHandler::RequestParams("password");
-          $event_id= HttpResquestHandler::RequestParams("event_id");         
+          $user_id= HttpResquestHandler::getParam("user_id");        
+          $password= HttpResquestHandler::getParam("password");
+          $event_id= HttpResquestHandler::getParam("event_id");         
         
           return $this->removeEvent($user_id,$password,$event_id);
     }

@@ -23,9 +23,9 @@ class TryUploadUserPhotoController implements IController {
     
     public function Index() {
         
-         $email=  HttpResquestHandler::RequestParams("email");
-         $password=  HttpResquestHandler::RequestParams("password");
-         $imagebase64 = HttpResquestHandler::RequestParams("image");
+         $email=  HttpResquestHandler::getParam("email");
+         $password=  HttpResquestHandler::getParam("password");
+         $imagebase64 = HttpResquestHandler::getParam("image");
          
       
          return $this->upLoad($email,$password, $imagebase64);

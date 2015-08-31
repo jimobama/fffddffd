@@ -19,10 +19,10 @@ include_once("Models/TryFetchUserEvent.php");
 class TryUploadEventWallPhotoController implements IController {
     public function Index() {
         
-         $email = HttpResquestHandler::RequestParams("user_id");
-         $password = HttpResquestHandler::RequestParams("user_password");
-         $eventId = HttpResquestHandler::RequestParams("event_id");
-         $imagebase64 = HttpResquestHandler::RequestParams("image");         
+         $email = HttpResquestHandler::getParam("user_id");
+         $password = HttpResquestHandler::getParam("user_password");
+         $eventId = HttpResquestHandler::getParam("event_id");
+         $imagebase64 = HttpResquestHandler::getParam("image");         
          
          return $this->uploadEventImage($email,$password,$eventId,$imagebase64);
         

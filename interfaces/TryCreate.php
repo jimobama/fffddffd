@@ -7,12 +7,12 @@
  */
 
 /**
- * Description of DoEvent
+ * Description of ICreate
  *
  * @author hacks
  */
-interface DoEvent {
+interface  TryCreate {
     //put your code here
- function done($output);
+ public  function create();
     
 }
